@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Website</title>
+    <title>Мой сайт</title>
 </head>
 <body>
     <header>
         <h1>Добро пожаловать на сайт</h1>
         <nav>
             <ul>
-                <li><a href="{% url 'index' %}">Home</a></li>
-                <li><a href="{% url 'top_sellers' %}">Top Sellers</a></li>
+                <li><a href="{% url 'index' %}">Дом</a></li>
+                <li><a href="{% url 'top_sellers' %}">Топ продаж</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        {% block content %}
+        {% Заблокированный контент %}
         {% endblock %}
     </main>
     <footer>
-        <p>&copy; 2021 My Website</p>
+        <p>&copy; 2023 Мой сайт</p>
     </footer>
 </body>
 </html>
@@ -29,8 +29,9 @@ top-sellers.html:
 {% block content %}
 <h2>Top Sellers</h2>
 <ul>
-    <li>Product 1</li>
-    <li>Product 2</li>
-    <li>Product 3</li>
+    <li>Продукт 1</li>
+    <li>Продукт 2</li>
+    <li>Продукт 3</li>
 </ul>
 {% endblock %}
+
