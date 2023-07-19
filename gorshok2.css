@@ -2,9 +2,11 @@ h1 {
     background: red;
 }
 .paragraph-1 {
-    background:dark;
-    font-size: 32pt;
+    font-style: italic;
+    text-align: center;
+    font-size: 24px;
     color: green;
+    text-shadow: 2px 2px 2px green;
 }
 .paragraph-2 {
     border: 10px solid yellow;
