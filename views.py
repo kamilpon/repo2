@@ -1,3 +1,5 @@
-from django.http import HttpResponse
-def lesson_4(request):
-    return HttpResponse("Домашка по 4 занятию")
+from django.shortcuts import render
+
+def page_1(request):
+
+    return render(request, 'page_1.html', locals())
