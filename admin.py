@@ -17,5 +17,17 @@ class AdvertisementAdmin(admin.ModelAdmin):
     updated_at_with_color.allow_tags = True
     updated_at_with_color.short_description = 'Последнее обновление'
 
+from django.db import models
+from django.conf import settings
+
+class Advertisement(models.Model):
+    image = models.ImageField(upload_to='advertisements/')
+
+    def image_url(self):
+        if self.image:
+            return self.image.url
+        else:
+            return settings.STATIC_URL + 'img/pic.png'
+
 
 admin.site.register(Advertisement, AdvertisementAdmin)
