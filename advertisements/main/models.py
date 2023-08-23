@@ -1,11 +1,42 @@
-from django.db import models
+rom django.db import models
 from django.contrib import admin
 from django.contrib.auth import get_user_model
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
+from django.forms import ModelForm
+from django.core.exceptions import ValidationError
 
 User = get_user_model()
 
+class AdForm(ModelForm):
+    class Meta:
+        model = Ad
+        fields = '__all__'
+
+class AdForm(ModelForm):
+    class Meta:
+        model = Ad
+        fields = '__all__'
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control'}),
+            'price': forms.NumberInput(attrs={'class': 'form-control'}),
+
+class AdForm(ModelForm):
+    class Meta:
+        model = Ad
+        fields = '__all__'
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control'}),
+            'price': forms.NumberInput(attrs={'class': 'form-control'}),
+            }
+
+        def clean_title(self):
+            title = self.cleaned_data.get('title')
+            if title.startswith('?'):
+                raise ValidationError("Заголовок не может начинаться с вопросительного знака")
+            return title
 class Advertisement(models.Model):
     title = models.CharField("Заголовок", max_length=128)
     description = models.TextField("Описание")
@@ -39,7 +70,6 @@ class Advertisement(models.Model):
     @admin.display(description='Thumbnail')
     def thumbnail_image(self):
         return html.format_html('<img src="{}" width="50" height="50" />', self.image.url)
-
 
 
 
